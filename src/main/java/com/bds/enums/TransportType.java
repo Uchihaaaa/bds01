@@ -1,4 +1,4 @@
-package com.hinode.enums;
+package com.bds.enums;
 
 public enum TransportType {
 	WALK,

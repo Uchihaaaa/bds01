@@ -1,12 +1,12 @@
-package com.hinode.service;
+package com.bds.service;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.hinode.dao.IStaffDAO;
-import com.hinode.entity.Staff;
+import com.bds.dao.IStaffDAO;
+import com.bds.entity.Staff;
 
 @Service
 public class StaffService {

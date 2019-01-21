@@ -1,12 +1,12 @@
-package com.hinode.service;
+package com.bds.service;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.hinode.dao.IClient;
-import com.hinode.entity.Client;
+import com.bds.dao.IClient;
+import com.bds.entity.Client;
 
 @Service
 public class ClientService {

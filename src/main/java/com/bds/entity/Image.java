@@ -1,4 +1,4 @@
-package com.hinode.entity;
+package com.bds.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

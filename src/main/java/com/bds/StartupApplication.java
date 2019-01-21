@@ -1,4 +1,4 @@
-package com.hinode;
+package com.bds;
 
 import java.util.Locale;
 
@@ -12,10 +12,10 @@ import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
 import org.springframework.web.servlet.i18n.SessionLocaleResolver;
 
 @SpringBootApplication
-public class HinodeApplication implements WebMvcConfigurer{
+public class StartupApplication implements WebMvcConfigurer{
 
 	public static void main(String[] args) {
-		SpringApplication.run(HinodeApplication.class, args);
+		SpringApplication.run(StartupApplication.class, args);
 	}
 	
 	@Bean

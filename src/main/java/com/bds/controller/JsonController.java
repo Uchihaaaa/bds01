@@ -1,4 +1,4 @@
-package com.hinode.controller;
+package com.bds.controller;
 
 import java.util.List;
 
@@ -7,14 +7,14 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.hinode.entity.Client;
-import com.hinode.entity.House;
-import com.hinode.entity.Image;
-import com.hinode.entity.Staff;
-import com.hinode.service.ClientService;
-import com.hinode.service.HouseService;
-import com.hinode.service.ImageService;
-import com.hinode.service.StaffService;
+import com.bds.entity.Client;
+import com.bds.entity.House;
+import com.bds.entity.Image;
+import com.bds.entity.Staff;
+import com.bds.service.ClientService;
+import com.bds.service.HouseService;
+import com.bds.service.ImageService;
+import com.bds.service.StaffService;
 
 @RestController
 public class JsonController {

@@ -1,4 +1,4 @@
-package com.hinode.service;
+package com.bds.service;
 
 import java.util.List;
 
@@ -8,11 +8,11 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
-import com.hinode.dao.IHouseDAO;
-import com.hinode.dao.IImageDAO;
-import com.hinode.dto.HouseSearchCondition;
-import com.hinode.entity.House;
-import com.hinode.entity.Image;
+import com.bds.dao.IHouseDAO;
+import com.bds.dao.IImageDAO;
+import com.bds.dto.HouseSearchCondition;
+import com.bds.entity.House;
+import com.bds.entity.Image;
 
 @Service
 public class HouseService{

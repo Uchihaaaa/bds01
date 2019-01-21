@@ -1,4 +1,4 @@
-package com.hinode.entity;
+package com.bds.entity;
 
 import java.time.LocalDate;
 

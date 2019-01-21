@@ -1,4 +1,4 @@
-package com.hinode.dto;
+package com.bds.dto;
 
 import lombok.Data;
 

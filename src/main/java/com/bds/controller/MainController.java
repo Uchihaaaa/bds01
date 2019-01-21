@@ -1,4 +1,4 @@
-package com.hinode.controller;
+package com.bds.controller;
 
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
@@ -30,15 +30,15 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.hinode.dto.HouseSearchCondition;
-import com.hinode.entity.Client;
-import com.hinode.entity.House;
-import com.hinode.entity.Image;
-import com.hinode.entity.Staff;
-import com.hinode.service.ClientService;
-import com.hinode.service.HouseService;
-import com.hinode.service.ImageService;
-import com.hinode.service.StaffService;
+import com.bds.dto.HouseSearchCondition;
+import com.bds.entity.Client;
+import com.bds.entity.House;
+import com.bds.entity.Image;
+import com.bds.entity.Staff;
+import com.bds.service.ClientService;
+import com.bds.service.HouseService;
+import com.bds.service.ImageService;
+import com.bds.service.StaffService;
 
 @Controller
 public class MainController {
