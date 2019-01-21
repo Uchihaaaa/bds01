@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" lang="en" layout:decorate="~{admin/index}">
+<head>
+    <!-- Title  -->
+    <title>South - Real Estate Agency Template | Listings</title>
+</head>
+<body>
+    <div layout:fragment="content"><!-- DIV CONTENT -->
+    	<div style="width: 100%; height: 90px; display: block;"></div>
+    	<!-- CONTENT HERE -->
+    	<div class="container">
+    	
+    		<!-- HEADER TITLE -->
+	    	<div class="col-12">
+	    		<!-- PAGINATION -->
+		    	<nav>
+    				<!-- TITLE -->
+    				<h2 id="headTitleSlider" class="headTitle">Slider header</h2>
+    				<button type="button" class="headButton btn btn-primary" data-toggle="modal" data-target="#myModal1">Thêm mới</button>
+			  	<div class="clearfix"></div>
+				</nav>
+				<!-- PAGINATION -->
+			</div>
+			<!-- HEADER TITLE -->
+			
+	    	<!-- START TABLE -->
+	    	<div class="col-12">
+				<div class="container-table100">
+					<div class="wrap-table100">
+						<div class="table100 ver1 mb-15">
+							<table data-vertable="ver1">
+								<thead>
+									<tr class="row100 head">
+										<th class="column100 column1" data-column="column1">ID</th>
+										<th class="column100 column2" data-column="column2">Xem trước</th>
+										<th class="column100 column8" data-column="column4">Thao tác</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr class="row100" th:each="obj : ${imageSliderList}">
+										<td width="20%" class="column100 column1" data-column="column1" th:text="${obj.id}"></td>
+										<td class="column100 column2" data-column="column2">
+											<img th:src="'data:image/png;base64,' + ${imageSilderMap.get(obj.id)}" onerror="this.onerror=null;this.src='img/bg-img/noimage256.png';">
+										</td>
+										<td width="10%" class="column100 column4" data-column="column4">
+											<a th:href="@{/deleteSlider/{id}(id=${obj.id})}"><button type="button" class="btn btn-danger">Xóa</button></a>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+	    	<!-- END TABLE -->
+	    	
+	    	
+			
+	    	<!-- STAFF HEADER TITLE -->
+	    	<div class="col-12">
+	    		<!-- PAGINATION -->
+		    	<nav>
+    				<!-- TITLE -->
+    				<h2 id="headTitleStaff" class="headTitle">Danh sách nhân viên</h2>
+	    			<button type="button" class="headButton btn btn-primary" data-toggle="modal" data-target="#myModal2">Thêm mới</button>
+			  	<div class="clearfix"></div>
+				</nav>
+				<!-- PAGINATION -->
+			</div>
+			<!-- HEADER TITLE -->
+			
+	    	<!-- START TABLE -->
+	    	<div class="col-12">
+				<div class="container-table100">
+					<div class="wrap-table100">
+						<div class="table100 ver1 mb-15">
+							<table data-vertable="ver1">
+								<thead>
+									<tr class="row100 head">
+										<th class="column100 column1" data-column="column1">ID</th>
+										<th class="column100 column2" data-column="column2">Hình ảnh</th>
+										<th class="column100 column3" data-column="column3">Tên</th>
+										<th class="column100 column4" data-column="column4">Chức vụ</th>
+										<th class="column100 column5" data-column="column5">Thao tác</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr class="row100" th:each="staff : ${staffList}">
+										<td width="20%" class="column100 column1" data-column="column1" th:text="${staff.id}"></td>
+										<td class="column100 column2" data-column="column2">
+											<img th:src="'data:image/png;base64,' + ${staff.sImage}" onerror="this.onerror=null;this.src='img/bg-img/noimage256.png';">
+										</td>
+										<td width="20%" class="column100 column3" data-column="column3" th:text="${staff.sName}"></td>
+										<td width="20%" class="column100 column4" data-column="column4" th:text="${staff.sPosition}"></td>
+										<td width="20%" class="column100 column5" data-column="column5">
+											<a th:href="@{findOneStaff/(id=${staff.id})}" class="eBtnStaff" data-toggle="modal" data-target="#myModal2">
+												<button type="button" class="btn btn-warning" >Sửa</button>
+											</a>
+											<a th:href="@{/deleteStaff/{id}(id=${staff.id})}"><button type="button" class="btn btn-danger">Xóa</button></a>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+	    	<!-- END TABLE -->
+	    	
+	    	<!-- CUSTOMER HEADER TITLE -->
+	    	<div class="col-12">
+	    		<!-- PAGINATION -->
+		    	<nav>
+    				<!-- TITLE -->
+    				<h2 id="headTitleClient" class="headTitle">Ý kiến khách hàng</h2>
+	    			<button type="button" class="headButton btn btn-primary" data-toggle="modal" data-target="#myModal3">Thêm mới</button>
+			  	<div class="clearfix"></div>
+				</nav>
+				<!-- PAGINATION -->
+			</div>
+			<!-- HEADER TITLE -->
+			
+	    	<!-- START TABLE -->
+	    	<div class="col-12">
+				<div class="container-table100">
+					<div class="wrap-table100">
+						<div class="table100 ver1 mb-15">
+							<table data-vertable="ver1">
+								<thead>
+									<tr class="row100 head">
+										<th class="column100 column1" data-column="column1">ID</th>
+										<th class="column100 column2" data-column="column2">Tên KH</th>
+										<th class="column100 column3" data-column="column3">Nơi ở</th>
+										<th class="column100 column4" data-column="column4">Bình luận</th>
+										<th class="column100 column5" data-column="column5">Thao tác</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr class="row100" th:each="client : ${clientList}">
+										<td width="20%" class="column100 column1" data-column="column1" th:text="${client.cid}">1</td>
+										<td class="column100 column2" data-column="column2" th:text="${client.cName}">Trần Văn C</td>
+										<td width="20%" class="column100 column3" data-column="column3" th:text="${client.cAddress}">Yokohama</td>
+										<td width="20%" class="column100 column3" data-column="column4" th:text="${client.cComment}">Tôi thấy HInode có dịch vụ rất tốt</td>
+										<td width="20%" class="column100 column5" data-column="column5">
+											<a th:href="@{findOneClient/(id=${client.cid})}" class="eBtnClient" data-toggle="modal" data-target="#myModal3">
+												<button type="button" class="btn btn-warning" >Sửa</button>
+											</a>
+											<a th:href="@{/deleteClient/{id}(id=${client.cid})}"><button type="button" class="btn btn-danger">Xóa</button></a>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+	    	<!-- END TABLE -->
+	    	
+	    	<!-- Modal -->			
+			<div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel2" aria-hidden="true">
+			  <div class="modal-dialog" role="document">
+			    <div class="modal-content">
+			      <div class="modal-header">
+			        <h5 class="modal-title" id="modalAll1">Thêm mới/Chỉnh sửa slider</h5>
+			        
+			      </div>
+			      	<form th:action="@{/saveSlider}" method="post" enctype="multipart/form-data">
+				      <div class="modal-body">
+		        		<div class="form-group col-md-12" id="imagePreview1">
+		        			<input name="imgSlider" id="imgSlider" type='file' hidden/>
+		        			<div class="previewArea">
+		        				<img class="previewImage" src="img/bg-img/noimage256.png"/>
+		        			</div>
+			            </div>
+				      </div>
+			      	<div class="modal-footer">
+			      		<button type="button" class="btn btn-warning" id="addImage1">Chọn ảnh</button>
+			      		<button type="submit" class="btn btn-primary">Lưu</button>
+				        <button type="button" class="btn btn-secondary" id="cancelImage1" data-dismiss="modal">Hủy</button>
+			      	</div>
+			      </form>
+			    </div>
+			  </div>
+			</div>
+			
+			<div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel2" aria-hidden="true">
+			  <div class="modal-dialog" role="document">
+			    <div class="modal-content">
+			      <div class="modal-header">
+			        <h5 class="modal-title" id="modalAll2">Thêm mới/Chỉnh sửa nhân viên</h5>
+			      </div>
+			      	<form id="staffForm" th:action="@{/saveStaff}" th:object="${staff}" method="post" enctype="multipart/form-data">
+				      <div class="modal-body">
+				      	<div class="form-row">
+				            <input type='text' th:field="*{id}" name="sid" id="sid" value="" hidden/>
+				            <div class="form-group col-md-6" id="imagePreview2">
+			        			<input type='file' name="imageStaff" id="imageStaff" hidden/>
+			        			<div class="previewArea">
+			        				<img class="previewImage" src="img/bg-img/noimage256.png"/>
+			        			</div>
+				            </div>
+				            <div class="form-group col-md-6">
+				            	<label for="sname">Họ và Tên</label>
+				                <input th:field="*{sName}" type="text" value="" class="form-control" name="sname" id="sname" placeholder="Chưa nhập...">
+				            	<label for="sposition">Chức vụ</label>
+				                <input th:field="*{sPosition}" type="text" value="" class="form-control" name="sposition" id="sposition" placeholder="Chưa nhập...">
+				            </div>
+				      	</div>
+				      </div>
+			      	<div class="modal-footer">
+			      		<button style="display: block;" type="button" class="btn btn-warning" id="addImage2">Chọn ảnh</button>
+			      		<button type="submit" class="btn btn-primary">OK</button>
+				        <button type="button" class="btn btn-secondary" id="cancelImage2" data-dismiss="modal">Hủy</button>
+			      	</div>
+			      </form>
+			    </div>
+			  </div>
+			</div>
+			
+			<div class="modal fade" id="myModal3" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel3" aria-hidden="true">
+			  <div class="modal-dialog" role="document">
+			    <div class="modal-content">
+			      <div class="modal-header">
+			        <h5 class="modal-title" id="modalAll3">Thêm mới/Chỉnh sửa nhận xét</h5>
+			      </div>
+			      	<form id="clientForm" th:action="@{/saveClient}" method="post">
+				      <div class="modal-body">
+				      	<input type="text" id="cid" name="cid" value="0" hidden>
+			            <div class="form-group">
+			            	<label for="cName">Họ và Tên</label>
+			                <input type="text" value="" class="form-control" name="cName" id="cName" placeholder="Chưa nhập...">
+			            </div>
+			            <div class="form-group">
+			            	<label for="cAddress">Nơi ở</label>
+			                <input type="text" value="" class="form-control" name="cAddress" id="cAddress" placeholder="Chưa nhập...">
+			            </div>
+			            <div class="form-group">
+			            	<label for="cComment">Nhận xét</label>
+			                <textarea id="cComment" name="cComment" rows="10" cols=""></textarea>
+			            </div>
+				      </div>
+			      	<div class="modal-footer">
+			      		<button type="submit" class="btn btn-primary">OK</button>
+				        <button type="button" class="btn btn-secondary" id="cancelImage3" data-dismiss="modal">Hủy</button>
+			      	</div>
+			      </form>
+			    </div>
+			  </div>
+			</div>
+	    	
+    	<!-- CONTENT HERE -->
+    	</div>
+	</div><!-- DIV CONTENT -->
+</body>
+</html>

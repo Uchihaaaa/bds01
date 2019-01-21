@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+    <!-- Title  -->
+    <title th:text="#{project.title}"></title>
+
+    <!-- Favicon  -->
+    <link rel="icon" href="img/core-img/favicon.ico">
+
+    <!-- Style CSS -->
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/animate.css">
+    <link rel="stylesheet" type="text/css" href="css/jquery-ui.min.css">
+    <link rel="stylesheet" type="text/css" href="css/util.css">
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+
+</head>
+
+<body>
+    <!-- ##### Header Area Start ##### -->
+    <header class="header-area">
+		<!-- Main Header Area -->
+        <div class="main-header-area" id="stickyHeader">
+            <div class="classy-nav-container breakpoint-off">
+                <!-- Classy Menu -->
+                <nav class="classy-navbar justify-content-between container" id="southNav">
+
+                    <!-- Logo -->
+                    <a class="nav-brand" href="index"><img class="ilogo" src="img/core-img/headlogo.png" alt=""></a>
+
+                    <!-- Navbar Toggler -->
+                    <div class="classy-navbar-toggler">
+                        <span class="navbarToggler"><span></span><span></span><span></span></span>
+                    </div>
+
+                    <!-- Menu -->
+                    <div class="classy-menu">
+                        <!-- Nav Start -->
+                        <div class="classynav">
+                            <ul>
+                                <li><a href="/admin">QL Nhà</a></li>
+                                <li><a href="#">QL Trang</a>
+                                	<ul class="dropdown">
+                                        <li><a href="/slider">Slider</a></li>
+                                        <li><a href="/staff">Nhân viên</a></li>
+                                        <li><a href="/client">Nhận xét KH</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="#">Xin chào, Admin</a>
+                                	<ul class="dropdown">
+                                        <li><a href="#">Đổi mật khẩu</a></li>
+                                        <li><a href="#">Đăng xuất</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- Nav End -->
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </header>
+    <!-- ##### Header Area End ##### -->
+
+    <!-- #################### START CONTENT  #################### -->
+    <div layout:fragment="content">
+	    <div style="width: 100%; height: 100px; display: block;"></div>
+	    
+	    <div class="container">
+	    	<!-- FORM -->
+	    	<div class="col-12">
+		    	<div class="adminForm">
+			        <form action="" method="post">
+	        			<div class="row">
+                            <div class="col-12 col-md-4 col-lg-3">
+                                <div class="form-group">
+                                	<label for="srchID">ID</label>
+                                    <input type="text" class="form-control" name="srchID" placeholder="Chưa nhập...">
+                                </div>
+                            </div>
+                            
+                            <div class="col-12 col-md-4 col-lg-3">
+                                <div class="form-group">
+                                	<label for="srchAddress">Địa chỉ</label>
+                                    <input type="text" class="form-control" name="srchAddress" placeholder="Chưa nhập...">
+                                </div>
+                            </div>
+                            
+                            <div class="col-12 col-md-4 col-lg-3">
+                                <div class="form-group">
+                                	<label for="srchName">Tên nhà</label>
+                                    <input type="text" class="form-control" name="srchName" placeholder="Chưa nhập...">
+                                </div>
+                            </div>
+
+                            <div class="col-12 col-md-4 col-lg-3">
+                                 <button type="submit" class="btn south-btn" style="margin-top: 20px; width: 100%;">Tìm kiếm</button>
+                            </div>
+                        </div>
+			        </form>
+		        </div>
+	        </div>
+			<!-- FORM -->
+	    
+	    	<!-- HEADER TITLE -->
+	    	<div class="col-12">
+	    		<!-- PAGINATION -->
+		    	<nav>
+		    		<!-- TITLE -->
+	    			<h2 class="headTitle">Danh sách nhà</h2>
+	    			
+				  <ul class="pagination">
+				    <li class="page-item" th:each="i : ${#numbers.sequence(0, houseList.totalPages - 1)}">
+				    	<a class="page-link" th:text="${(i+1)}" th:href="@{?(page=${i})}" th:classappend="${currentPage}==${i}?'active':''"></a>
+			    	</li>
+				  </ul>
+				  <div class="clearfix"></div>
+				</nav>
+				<!-- PAGINATION -->
+			</div>
+			<!-- HEADER TITLE -->
+			
+	    	<!-- START TABLE -->
+	    	<div class="col-12">
+				<div class="container-table100">
+					<div class="wrap-table100">
+						<div class="table100 ver1 mb-15">
+							<table data-vertable="ver1">
+								<thead>
+									<tr class="row100 head">
+										<th class="column100 column1" data-column="column1">ID</th>
+										<th class="column100 column2" data-column="column2">Tên nhà</th>
+										<th class="column100 column3" data-column="column3">Giá thuê</th>
+										<th class="column100 column4" data-column="column4">Địa chỉ</th>
+										<th class="column100 column5" data-column="column5">Thao tác</th>
+									</tr>
+								</thead>
+								<tbody th:each="obj : ${houseList}">
+									<tr class="row100" th:object="${obj}">
+										<td width="10%" class="column100 column1" data-column="column1" th:text="*{id}"></td>
+										<td width="20%" class="column100 column2" data-column="column2" th:text="*{name}"></td>
+										<td width="20%" class="column100 column3" data-column="column3" th:text="*{rentFee}"></td>
+										<td width="30%" class="column100 column4" data-column="column4" th:text="*{address}"></td>
+										<td width="20%" class="column100 column5" data-column="column5">
+											<a th:href="@{findOne/(id=${obj.id})}" th:attr="data-img=@{getImage/(houseId=${obj.id})}" class="eBtn">
+												<button type="button" class="btn btn-warning">Sửa</button>
+											</a>
+											<a th:href="@{/delete/{id}(id=*{id})}">
+												<button type="button" class="btn btn-danger">Xóa</button>
+											</a>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+	    	<!-- END TABLE -->
+	    	
+	    	<!-- HEADER TITLE -->
+	    	<div class="col-12" id="editAddForm">
+		   		<!-- TITLE -->
+	  			<h2 class="headTitle">Chỉnh sửa / Thêm mới</h2>
+			  	<div class="clearfix"></div>
+			</div>
+			<!-- HEADER TITLE -->
+	    	
+	    	<!-- FORM -->
+	    	<div class="col-12">
+		    	<div class="adminForm">
+			        <form th:action="@{/save}" th:object="${house}" method="post" enctype="multipart/form-data">
+			        	<input type="hidden" name="id" id="id" th:field="*{id}">
+			            <div class="form-row">
+			            	<div class="form-group col-md-6">
+				            	<label for="name">Tên nhà</label>
+				                <input type="text" class="form-control" name="name" id="name" th:field="*{name}"  placeholder="Chưa nhập...">
+				            </div>
+				            <div class="form-group col-md-6">
+				            	<label for="buildfrom">Xây dựng từ</label>
+				                <input type="text" class="form-control" name="buildFrom" id="buildFrom" th:field="*{buildFrom}" placeholder="Chưa nhập...">
+				            </div>
+			            </div>
+			            
+			        	<div class="form-row">
+			        		<div class="form-group col-md-6">
+				            	<label for="address">Địa chỉ</label>
+				                <input type="text" class="form-control" name="address" id="address" th:field="*{address}" placeholder="Chưa nhập...">
+				            </div>
+				            <div class="form-group col-md-6">
+				            	<label for="area">Diện tích</label>
+				                <input type="text" class="form-control" name="area" id="area" th:field="*{area}" placeholder="Chưa nhập...">
+				            </div>
+			            </div>
+			            
+			            <div class="form-row">
+				            <div class="form-group col-md-6">
+				            	<label for="roomType">Loại phòng</label>
+				                <input type="text" class="form-control" name="roomType" id="roomType" th:field="*{roomType}" placeholder="Chưa nhập...">
+				            </div>
+				            <div class="form-group col-md-6">
+				            	<label for="rentFee">Phí thuê nhà</label>
+				                <input type="number" class="form-control" name="rentFee" id="rentFee" th:field="*{rentFee}" placeholder="Chưa nhập...">
+				            </div>
+			        	</div>
+			            
+			            <div class="form-row">
+				            <div class="form-group col-md-6">
+				            	<label for="depositeFee">Phí tiền gửi</label>
+				                <input type="number" class="form-control" name="depositeFee" id="depositeFee" th:field="*{depositeFee}" placeholder="Chưa nhập...">
+				            </div>
+				            <div class="form-group col-md-6">
+				            	<label for="guaranteeFee">Phí bảo lãnh</label>
+				                <input type="number" class="form-control" name="guaranteeFee" id="guaranteeFee" th:field="*{guaranteeFee}" placeholder="Chưa nhập...">
+				            </div>
+			        	</div> 
+			        	
+			        	<div class="form-row">
+				            <div class="form-group col-md-6">
+				            	<label for="manageFee">Tiền quản lý</label>
+				                <input type="number" class="form-control" name="manageFee" id="manageFee" th:field="*{manageFee}" placeholder="Chưa nhập...">
+				            </div>
+				            <div class="form-group col-md-6">
+				            	<label for="personInCharge">Nhân viên phụ trách</label>
+				                <input type="text" class="form-control" name="personInCharge" id="personInCharge" th:field="*{personInCharge}" placeholder="Chưa nhập...">
+				            </div>
+			        	</div>
+			        	<div class="form-row">
+				            <div class="form-group col-md-6">
+				            	<label for="staffContact">Liên hệ</label>
+				                <input type="text" class="form-control" name="staffContact" id="staffContact" th:field="*{staffContact}" placeholder="Chưa nhập...">
+				            </div>
+				            <div class="form-group col-md-6">
+				            	<label for="status">Trạng thái</label>
+				                <input type="text" class="form-control" name="status" id="status" th:field="*{status}" placeholder="Chưa nhập...">
+				            </div>
+			        	</div>
+			        	
+			        	<div class="form-row">
+				            <div class="form-group col-md-6">
+				            	<label for="station">Ga</label>
+				                <input type="text" class="form-control" th:field="*{station}" name="station" id="station" placeholder="Chưa nhập...">
+				            </div> 
+				            <div class="form-group col-md-6">
+				            	<label for="other">Ghi chú</label>
+				                <input type="text" class="form-control" name="other" id="other" th:field="*{other}" placeholder="Chưa nhập...">
+				            </div>
+			        	</div>
+			        	
+			        	<div class="form-row">
+			        	<!--<div class="form-group col-md-12">
+				            	<label for="ssi-upload">Hình ảnh</label>
+				                <input type="file" name="ssi-upload" multiple id="ssi-upload"/>
+				            </div>--> 
+				            <div class="form-group clrfix col-md-12" id="imageHouse">
+				            	<!-- IMAGE LOAD HERE -->
+				            </div>
+				            <input name="ssi-upload" id="imgHouse" type='file' multiple hidden/>
+				            
+			        	</div>
+			        	<button type="button" class="btn btn-warning" id="addImage">Chọn ảnh</button>
+			            <button type="button" class="btn btn-secondary refreshBtn" id="cancelImage">Clear All</button>
+			            <button type="submit" class="btn btn-primary">OK</button>
+			        </form>
+		        </div>
+	        </div>
+			<!-- FORM -->	
+		</div>
+		
+    </div>
+	<!-- #################### END CONTENT  #################### -->
+	
+    <!-- jQuery (Necessary for All JavaScript Plugins) -->
+    <script src="js/jquery/jquery-2.2.4.min.js"></script>
+    <!-- Popper js -->
+    <script src="js/popper.min.js"></script>
+    <!-- Bootstrap js -->
+    <script src="js/bootstrap.min.js"></script>
+    <!-- Plugins js -->
+    <script src="js/plugins.js"></script>
+    <script src="js/classy-nav.min.js"></script>
+    <script src="js/jquery-ui.min.js"></script>
+    <script src="js/select2.min.js"></script>
+   	<script src="js/imageUpload.js"></script>
+    <!-- Active js -->
+    <script src="js/admin.js"></script>
+</body>
+
+</html>
